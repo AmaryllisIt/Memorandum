@@ -23,9 +23,9 @@
    <widget class="QLabel" name="label_mainwindow_name">
     <property name="geometry">
      <rect>
-      <x>480</x>
+      <x>90</x>
       <y>20</y>
-      <width>301</width>
+      <width>1091</width>
       <height>71</height>
      </rect>
     </property>
@@ -45,7 +45,7 @@
      <string notr="true">text-color: rgb(255, 255, 255)</string>
     </property>
     <property name="text">
-     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:36pt; color:#ffffff;&quot;&gt;Memorandum&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:36pt; color:#ffffff;&quot;&gt;Memorandum&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
     </property>
    </widget>
    <widget class="QGroupBox" name="stack_1">
@@ -100,9 +100,9 @@
     <widget class="QPushButton" name="cb_1">
      <property name="geometry">
       <rect>
-       <x>870</x>
+       <x>850</x>
        <y>20</y>
-       <width>101</width>
+       <width>121</width>
        <height>41</height>
       </rect>
      </property>
@@ -196,9 +196,9 @@
     <widget class="QPushButton" name="cb_2">
      <property name="geometry">
       <rect>
-       <x>870</x>
+       <x>850</x>
        <y>20</y>
-       <width>101</width>
+       <width>121</width>
        <height>41</height>
       </rect>
      </property>
@@ -292,9 +292,9 @@
     <widget class="QPushButton" name="cb_3">
      <property name="geometry">
       <rect>
-       <x>870</x>
+       <x>850</x>
        <y>20</y>
-       <width>101</width>
+       <width>121</width>
        <height>41</height>
       </rect>
      </property>
@@ -388,9 +388,9 @@
     <widget class="QPushButton" name="cb_4">
      <property name="geometry">
       <rect>
-       <x>870</x>
+       <x>850</x>
        <y>20</y>
-       <width>101</width>
+       <width>121</width>
        <height>41</height>
       </rect>
      </property>
@@ -484,9 +484,9 @@
     <widget class="QPushButton" name="cb_5">
      <property name="geometry">
       <rect>
-       <x>870</x>
+       <x>850</x>
        <y>20</y>
-       <width>101</width>
+       <width>121</width>
        <height>41</height>
       </rect>
      </property>
@@ -580,9 +580,9 @@
     <widget class="QPushButton" name="cb_6">
      <property name="geometry">
       <rect>
-       <x>870</x>
+       <x>850</x>
        <y>20</y>
-       <width>101</width>
+       <width>121</width>
        <height>41</height>
       </rect>
      </property>
@@ -643,6 +643,133 @@
      <bool>true</bool>
     </property>
    </widget>
+   <widget class="QGroupBox" name="changebox">
+    <property name="geometry">
+     <rect>
+      <x>50</x>
+      <y>90</y>
+      <width>1181</width>
+      <height>591</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Comic Sans MS</family>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
+    <property name="cursor">
+     <cursorShape>BlankCursor</cursorShape>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">.my-groupbox {
+    border: 1px solid  rgb(46, 47, 49); 
+    border-color: rgb(46, 47, 49);
+
+}</string>
+    </property>
+    <property name="title">
+     <string/>
+    </property>
+    <widget class="QPlainTextEdit" name="description">
+     <property name="geometry">
+      <rect>
+       <x>40</x>
+       <y>120</y>
+       <width>1091</width>
+       <height>391</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QPlainTextEdit" name="title">
+     <property name="geometry">
+      <rect>
+       <x>40</x>
+       <y>50</y>
+       <width>1091</width>
+       <height>61</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="save_new">
+     <property name="geometry">
+      <rect>
+       <x>920</x>
+       <y>530</y>
+       <width>101</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Comic Sans MS</family>
+       <pointsize>10</pointsize>
+      </font>
+     </property>
+     <property name="cursor">
+      <cursorShape>PointingHandCursor</cursorShape>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">color: rgb(0, 0, 0)</string>
+     </property>
+     <property name="text">
+      <string>Сохранить</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="just_back">
+     <property name="geometry">
+      <rect>
+       <x>1040</x>
+       <y>530</y>
+       <width>91</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Comic Sans MS</family>
+       <pointsize>10</pointsize>
+      </font>
+     </property>
+     <property name="cursor">
+      <cursorShape>PointingHandCursor</cursorShape>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">color: rgb(0, 0, 0)</string>
+     </property>
+     <property name="text">
+      <string>Назад</string>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QLabel" name="label_mainwindow_name_2">
+    <property name="geometry">
+     <rect>
+      <x>590</x>
+      <y>690</y>
+      <width>591</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Comic Sans MS</family>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
+    <property name="toolTip">
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;gsgsg&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    </property>
+    <property name="whatsThis">
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;agsgsdg&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">text-color: rgb(255, 255, 255)</string>
+    </property>
+    <property name="text">
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:10pt; color:#ffffff;&quot;&gt;Програмное обеспечение разработано для немассового использования. Memorandum 2026.&lt;/span&gt;&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:10pt; color:#ffffff;&quot;&gt;&lt;br/&gt;&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    </property>
+   </widget>
    <zorder>label</zorder>
    <zorder>label_mainwindow_name</zorder>
    <zorder>stack_1</zorder>
@@ -651,6 +778,8 @@
    <zorder>stack_4</zorder>
    <zorder>stack_5</zorder>
    <zorder>stack_6</zorder>
+   <zorder>changebox</zorder>
+   <zorder>label_mainwindow_name_2</zorder>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">

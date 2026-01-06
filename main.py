@@ -3,7 +3,8 @@ from ui.notes_ui import Ui_MainWindow as NotesMainWindow
 from modules.encoder import encoder
 
 from PyQt6.QtWidgets import QMainWindow, QMessageBox, QApplication
-from PyQt6.QtGui import QIcon
+from PyQt6.QtGui import QIcon, QFont
+from PyQt6.QtCore import Qt
 import sqlite3
 import sys
 import ast
@@ -12,6 +13,7 @@ import ast
 is_login = False
 # Переменная, отвечающая за войти/зарегистрироваться
 process = "login"
+current_user = None
 
 
 class Authentication(QMainWindow, LoginWindow):
@@ -94,16 +96,16 @@ class Authentication(QMainWindow, LoginWindow):
                     else:
 
                         self.data = {
-                            
-                            "name": f"{self.new_login.toPlainText()}", 
-                            "2": {"title": "нет заголовка", "description": "нет описания"},
-                            "1": {"title": "нет заголовка", "description": "нет описания"},
-                            "3": {"title": "нет заголовка", "description": "нет описания"},
-                            "4": {"title": "нет заголовка", "description": "нет описания"},
-                            "5": {"title": "нет заголовка", "description": "нет описания"},
-                            "6": {"title": "нет заголовка", "description": "нет описания"}
 
-                            }
+                            "name": f"{self.new_login.toPlainText()}",
+                            "2": {"title": "нет заголовка", "description": "нет описания", 'being': False},
+                            "1": {"title": "нет заголовка", "description": "нет описания", 'being': False},
+                            "3": {"title": "нет заголовка", "description": "нет описания", 'being': False},
+                            "4": {"title": "нет заголовка", "description": "нет описания", 'being': False},
+                            "5": {"title": "нет заголовка", "description": "нет описания", 'being': False},
+                            "6": {"title": "нет заголовка", "description": "нет описания", 'being': False}
+
+                        }
 
                         cursor.execute(
                             f'INSERT INTO USERDATA(LOGIN, PASSWORD, DATA) VALUES("{self.new_login.toPlainText()}", "{encoder(self.password_1.toPlainText())}", "{self.data}") ')
@@ -132,13 +134,82 @@ class Notes(QMainWindow, NotesMainWindow):
         super().__init__()
         self.setupUi(self)
         self.setFixedSize(self.width(), self.height())
+        self.cb_1.clicked.connect(self.edit_menu)
+        self.cb_2.clicked.connect(self.edit_menu)
+        self.cb_3.clicked.connect(self.edit_menu)
+        self.cb_4.clicked.connect(self.edit_menu)
+        self.cb_5.clicked.connect(self.edit_menu)
+        self.cb_6.clicked.connect(self.edit_menu)
+        self.changebox.hide()
+        self.save_new.clicked.connect(self.make_an_note)
+
+    def _hide_mainboard(self):
+        self.stack_1.hide()
+        self.stack_2.hide()
+        self.stack_3.hide()
+        self.stack_4.hide()
+        self.stack_5.hide()
+        self.stack_6.hide()
+
+    def _show_mainboard(self):
+        self.stack_1.show()
+        self.stack_2.show()
+        self.stack_3.show()
+        self.stack_4.show()
+        self.stack_5.show()
+        self.stack_6.show()
+        self.repaint()
+
+    def edit_menu(self):
+        self.number = self.sender().objectName().split('_')[-1]
+        self._hide_mainboard()
+        self.label_mainwindow_name.setText('Меню редактирования')
+        self.label_mainwindow_name.setFont(QFont('Comic Sans MS', 30))
+        self.label_mainwindow_name.setAlignment(Qt.AlignmentFlag.AlignHCenter)
+        self.changebox.show()
+        with sqlite3.connect(database="database/database.sqlite3") as db:
+            cursor = db.cursor()
+            req = cursor.execute(
+                f'SELECT * FROM USERDATA WHERE LOGIN = "{current_user}"')
+
+            data = [item for item in req][0][-1]
+            data = ast.literal_eval(data)
+
+        self.title.setPlainText(data[self.number]['title'])
+        self.description.setPlainText(data[self.number]['description'])
+
+    def make_an_note(self):
+        global current_user
+        """процесс сохранения новой информации и внесение её в БД"""
+        print(self.number)
+        self.changebox.hide()
+        self._show_mainboard()
+        self.label_mainwindow_name.setText('Memorandum')
+        self.label_mainwindow_name.setFont(QFont('Comic Sans MS', 30))
+        self.label_mainwindow_name.setAlignment(Qt.AlignmentFlag.AlignHCenter)
+        with sqlite3.connect(database="database/database.sqlite3") as db:
+            cursor = db.cursor()
+            req = cursor.execute(
+                f'SELECT * FROM USERDATA WHERE LOGIN = "{current_user}"')
+
+            data = [item for item in req][0][-1]
+            data = ast.literal_eval(data)
+
+            data[self.number]['title'] = self.title.toPlainText()
+            data[self.number]['description'] = self.description.toPlainText()
+            print(data)
+            print(current_user)
+            cursor.execute(
+                f'UPDATE USERDATA SET DATA = "{data}" WHERE LOGIN = "{current_user}"')
+            db.commit()
+        self.init_user_interface()
 
     def init_user_interface(self):
         with sqlite3.connect(database="database/database.sqlite3") as db:
             cursor = db.cursor()
             req = cursor.execute(
                 f'SELECT * FROM USERDATA WHERE LOGIN = "{current_user}"')
-            
+
             data = [item for item in req][0][-1]
             data = ast.literal_eval(data)
 
@@ -154,7 +225,6 @@ class Notes(QMainWindow, NotesMainWindow):
         self.lt_5.setText(data['5']['description'])
         self.stack_6.setTitle(data['6']['title'])
         self.lt_6.setText(data['6']['description'])
-        
         self.repaint()
 
 
@@ -163,10 +233,10 @@ if __name__ == '__main__':
     ex1 = Authentication()
     ex2 = Notes()
     ex1.show()
-    
+
     def start_notes():
         ex2.show()
         ex2.init_user_interface()
         ex1.close()
-    
+
     app.exec()
