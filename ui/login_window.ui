@@ -1,0 +1,334 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>602</width>
+    <height>734</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QFrame" name="frame">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>611</width>
+      <height>741</height>
+     </rect>
+    </property>
+    <property name="toolTip">
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;Memorandum&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    </property>
+    <property name="whatsThis">
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;Memorandum&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::StyledPanel</enum>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Raised</enum>
+    </property>
+    <widget class="QLabel" name="header">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>90</y>
+       <width>611</width>
+       <height>61</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">font: 26pt &quot;Comic Sans MS&quot;;</string>
+     </property>
+     <property name="text">
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:36pt; color:#ffffff;&quot;&gt;Memorandum&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     </property>
+     <property name="buddy">
+      <cstring></cstring>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label">
+     <property name="geometry">
+      <rect>
+       <x>-10</x>
+       <y>0</y>
+       <width>621</width>
+       <height>741</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">\</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="pixmap">
+      <pixmap>../images/login_background.jpg</pixmap>
+     </property>
+     <property name="buddy">
+      <cstring></cstring>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_2">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>160</y>
+       <width>601</width>
+       <height>51</height>
+      </rect>
+     </property>
+     <property name="toolTip">
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;Для начала работы войдите в систему&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     </property>
+     <property name="whatsThis">
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Для начала работы войдите в систему&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">font: 15pt &quot;Comic Sans MS&quot;;</string>
+     </property>
+     <property name="text">
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; color:#ffffff;&quot;&gt;Для начала работы войдите в систему&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+     <property name="wordWrap">
+      <bool>false</bool>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="go_login">
+     <property name="geometry">
+      <rect>
+       <x>110</x>
+       <y>420</y>
+       <width>181</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="toolTip">
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">font: 12pt &quot;Comic Sans MS&quot;;</string>
+     </property>
+     <property name="text">
+      <string>Войти</string>
+     </property>
+     <property name="autoDefault">
+      <bool>false</bool>
+     </property>
+     <property name="default">
+      <bool>false</bool>
+     </property>
+     <property name="flat">
+      <bool>false</bool>
+     </property>
+    </widget>
+    <widget class="QTextEdit" name="password">
+     <property name="geometry">
+      <rect>
+       <x>200</x>
+       <y>310</y>
+       <width>231</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">font: 12pt &quot;Comic Sans MS&quot;;</string>
+     </property>
+     <property name="placeholderText">
+      <string>пароль</string>
+     </property>
+    </widget>
+    <widget class="QTextEdit" name="login">
+     <property name="geometry">
+      <rect>
+       <x>200</x>
+       <y>240</y>
+       <width>231</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">font: 12pt &quot;Comic Sans MS&quot;;</string>
+     </property>
+     <property name="documentTitle">
+      <string extracomment="dtjdfhfdjf"/>
+     </property>
+     <property name="overwriteMode">
+      <bool>false</bool>
+     </property>
+     <property name="placeholderText">
+      <string>логин</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_3">
+     <property name="geometry">
+      <rect>
+       <x>530</x>
+       <y>710</y>
+       <width>71</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>alpha v0.1.1</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="go_reg">
+     <property name="geometry">
+      <rect>
+       <x>310</x>
+       <y>420</y>
+       <width>181</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="toolTip">
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">font: 12pt &quot;Comic Sans MS&quot;;</string>
+     </property>
+     <property name="text">
+      <string>Зарегистрироваться</string>
+     </property>
+     <property name="autoDefault">
+      <bool>false</bool>
+     </property>
+     <property name="default">
+      <bool>false</bool>
+     </property>
+     <property name="flat">
+      <bool>false</bool>
+     </property>
+    </widget>
+    <widget class="QTextEdit" name="new_login">
+     <property name="enabled">
+      <bool>true</bool>
+     </property>
+     <property name="geometry">
+      <rect>
+       <x>200</x>
+       <y>240</y>
+       <width>231</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">font: 12pt &quot;Comic Sans MS&quot;;</string>
+     </property>
+     <property name="documentTitle">
+      <string extracomment="dtjdfhfdjf"/>
+     </property>
+     <property name="overwriteMode">
+      <bool>false</bool>
+     </property>
+     <property name="placeholderText">
+      <string>логин</string>
+     </property>
+    </widget>
+    <widget class="QTextEdit" name="password_2">
+     <property name="enabled">
+      <bool>true</bool>
+     </property>
+     <property name="geometry">
+      <rect>
+       <x>200</x>
+       <y>340</y>
+       <width>231</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">font: 12pt &quot;Comic Sans MS&quot;;</string>
+     </property>
+     <property name="documentTitle">
+      <string extracomment="dtjdfhfdjf"/>
+     </property>
+     <property name="overwriteMode">
+      <bool>false</bool>
+     </property>
+     <property name="placeholderText">
+      <string>повторите пароль</string>
+     </property>
+    </widget>
+    <widget class="QTextEdit" name="password_1">
+     <property name="enabled">
+      <bool>true</bool>
+     </property>
+     <property name="geometry">
+      <rect>
+       <x>200</x>
+       <y>290</y>
+       <width>231</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">font: 12pt &quot;Comic Sans MS&quot;;</string>
+     </property>
+     <property name="documentTitle">
+      <string extracomment="dtjdfhfdjf"/>
+     </property>
+     <property name="overwriteMode">
+      <bool>false</bool>
+     </property>
+     <property name="placeholderText">
+      <string>пароль</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="start">
+     <property name="geometry">
+      <rect>
+       <x>220</x>
+       <y>510</y>
+       <width>181</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="toolTip">
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">font: 12pt &quot;Comic Sans MS&quot;;</string>
+     </property>
+     <property name="text">
+      <string>Начать</string>
+     </property>
+     <property name="autoDefault">
+      <bool>false</bool>
+     </property>
+     <property name="default">
+      <bool>false</bool>
+     </property>
+     <property name="flat">
+      <bool>false</bool>
+     </property>
+    </widget>
+    <zorder>label</zorder>
+    <zorder>header</zorder>
+    <zorder>label_2</zorder>
+    <zorder>go_login</zorder>
+    <zorder>password</zorder>
+    <zorder>login</zorder>
+    <zorder>label_3</zorder>
+    <zorder>go_reg</zorder>
+    <zorder>new_login</zorder>
+    <zorder>password_2</zorder>
+    <zorder>password_1</zorder>
+    <zorder>start</zorder>
+   </widget>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
