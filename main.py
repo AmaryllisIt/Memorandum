@@ -58,9 +58,9 @@ class Authentication(QMainWindow, LoginWindow):
                 self.messagebox.setText(
                     'Проверьте правильность ввода логина или пароля.')
                 self.messagebox.show()
-        except Exception as e:
+        except Exception:
             self.messagebox.setText(
-                'Возникла ошибка при попытке войти в систему. Скорее всего, данного аккаунта не существует. Детали: {}'.format(e))
+                'Возникла ошибка при попытке войти в систему. Скорее всего, данного аккаунта не существует')
             self.messagebox.show()
 
     def _registration_form(self):
@@ -134,6 +134,7 @@ class Notes(QMainWindow, NotesMainWindow):
         super().__init__()
         self.setupUi(self)
         self.setFixedSize(self.width(), self.height())
+        self.setWindowIcon(QIcon("images/main_icon.ico"))
         self.cb_1.clicked.connect(self.edit_menu)
         self.cb_2.clicked.connect(self.edit_menu)
         self.cb_3.clicked.connect(self.edit_menu)
@@ -149,9 +150,13 @@ class Notes(QMainWindow, NotesMainWindow):
         self.db_4.clicked.connect(self.deleteEvent)
         self.db_5.clicked.connect(self.deleteEvent)
         self.db_6.clicked.connect(self.deleteEvent)
+        self.menuAbout_us.triggered.connect(self.about)
         self.info_label = QMessageBox(self)
-        
 
+    def about(self):
+        self.info_label.setText("Приложение \"Memorandum\"\nСтатус разработки: alpha\n\n\n\nДАННОЕ ПРОГРАММНОЕ ОБЕСПЕЧЕНИЕ НЕ ПРЕДНАЗНАЧЕНО ДЛЯ МАССОВОГО РАСПРОСТРАНЕНИЯ И ЗАЩИЩЕНО АВТОРСКИМ ПРАВОМ. \n\nNavio, Sarugakuza, AmaryllisIt, \n2026")
+        self.info_label.show()
+        self.info_label.setWindowTitle('О приложении')
 
     def _hide_mainboard(self):
         self.stack_1.hide()
@@ -178,8 +183,6 @@ class Notes(QMainWindow, NotesMainWindow):
         self.label_mainwindow_name.setAlignment(Qt.AlignmentFlag.AlignHCenter)
         self.changebox.show()
 
-        
-
         with sqlite3.connect(database="database/database.sqlite3") as db:
             cursor = db.cursor()
             req = cursor.execute(
@@ -190,8 +193,6 @@ class Notes(QMainWindow, NotesMainWindow):
 
         self.title.setPlainText(data[self.number]['title'])
         self.description.setPlainText(data[self.number]['description'])
-        
-        
 
     def make_a_note(self):
         global current_user
@@ -215,9 +216,14 @@ class Notes(QMainWindow, NotesMainWindow):
             data[self.number]['being'] = True
             # print(data)
             # print(current_user)
-            cursor.execute(
-                f'UPDATE USERDATA SET DATA = "{data}" WHERE LOGIN = "{current_user}"')
-            
+            try:
+                cursor.execute(
+                    f'UPDATE USERDATA SET DATA = "{data}" WHERE LOGIN = "{current_user}"')
+            except sqlite3.OperationalError as e:
+                self.info_label.setText("В данной версии программы недопустимо использование одинарных и двойных кавычек и других специальных символов.")
+                self.info_label.setWindowTitle('Ошибка!')
+                self.info_label.show()
+
             db.commit()
         self.init_user_interface()
 
@@ -229,7 +235,6 @@ class Notes(QMainWindow, NotesMainWindow):
 
             data = [item for item in req][0][-1]
             data = ast.literal_eval(data)
-           
 
         self.stack_1.setTitle(data['1']['title'])
         self.lt_1.setText(data['1']['description'])
@@ -282,12 +287,11 @@ class Notes(QMainWindow, NotesMainWindow):
         self.repaint()
 
     def backEvent(self):
-        
         self.title.setPlainText('')
         self.description.setPlainText('')
         self._show_mainboard()
         self.init_user_interface()
-        self.changebox.hide()   
+        self.changebox.hide()
         self.label_mainwindow_name.setText('Memorandum')
         self.label_mainwindow_name.setFont(QFont('Comic Sans MS', 30))
         self.label_mainwindow_name.setAlignment(Qt.AlignmentFlag.AlignHCenter)
@@ -311,12 +315,13 @@ class Notes(QMainWindow, NotesMainWindow):
 
                 cursor.execute(
                     f'UPDATE USERDATA SET DATA = "{data}" WHERE LOGIN = "{current_user}"')
-                
+
                 db.commit()
-            
+
             self.init_user_interface()
         else:
             pass
+
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)

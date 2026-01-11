@@ -805,7 +805,7 @@
    <zorder>changebox</zorder>
    <zorder>label_mainwindow_name_2</zorder>
   </widget>
-  <widget class="QMenuBar" name="menubar">
+  <widget class="QMenuBar" name="about_us">
    <property name="geometry">
     <rect>
      <x>0</x>
@@ -814,23 +814,22 @@
      <height>21</height>
     </rect>
    </property>
-   <widget class="QMenu" name="menuAbout_us">
-    <property name="title">
-     <string>Параметры</string>
-    </property>
-    <addaction name="action"/>
-   </widget>
    <widget class="QMenu" name="menu">
     <property name="title">
      <string>О программе</string>
     </property>
+    <addaction name="menuAbout_us"/>
    </widget>
-   <addaction name="menuAbout_us"/>
    <addaction name="menu"/>
   </widget>
   <action name="action">
    <property name="text">
     <string>Выйти из системы</string>
+   </property>
+  </action>
+  <action name="menuAbout_us">
+   <property name="text">
+    <string>О программе</string>
    </property>
   </action>
  </widget>
