@@ -98,12 +98,12 @@ class Authentication(QMainWindow, LoginWindow):
                         self.data = {
 
                             "name": f"{self.new_login.toPlainText()}",
-                            "2": {"title": "нет заголовка", "description": "нет описания", 'being': False},
-                            "1": {"title": "нет заголовка", "description": "нет описания", 'being': False},
-                            "3": {"title": "нет заголовка", "description": "нет описания", 'being': False},
-                            "4": {"title": "нет заголовка", "description": "нет описания", 'being': False},
-                            "5": {"title": "нет заголовка", "description": "нет описания", 'being': False},
-                            "6": {"title": "нет заголовка", "description": "нет описания", 'being': False}
+                            "2": {"title": "-", "description": "", 'being': False},
+                            "1": {"title": "-", "description": "", 'being': False},
+                            "3": {"title": "-", "description": "", 'being': False},
+                            "4": {"title": "-", "description": "", 'being': False},
+                            "5": {"title": "-", "description": "", 'being': False},
+                            "6": {"title": "-", "description": "", 'being': False}
 
                         }
 
@@ -141,7 +141,17 @@ class Notes(QMainWindow, NotesMainWindow):
         self.cb_5.clicked.connect(self.edit_menu)
         self.cb_6.clicked.connect(self.edit_menu)
         self.changebox.hide()
-        self.save_new.clicked.connect(self.make_an_note)
+        self.save_new.clicked.connect(self.make_a_note)
+        self.just_back.clicked.connect(self.backEvent)
+        self.db_1.clicked.connect(self.deleteEvent)
+        self.db_2.clicked.connect(self.deleteEvent)
+        self.db_3.clicked.connect(self.deleteEvent)
+        self.db_4.clicked.connect(self.deleteEvent)
+        self.db_5.clicked.connect(self.deleteEvent)
+        self.db_6.clicked.connect(self.deleteEvent)
+        self.info_label = QMessageBox(self)
+        
+
 
     def _hide_mainboard(self):
         self.stack_1.hide()
@@ -167,6 +177,9 @@ class Notes(QMainWindow, NotesMainWindow):
         self.label_mainwindow_name.setFont(QFont('Comic Sans MS', 30))
         self.label_mainwindow_name.setAlignment(Qt.AlignmentFlag.AlignHCenter)
         self.changebox.show()
+
+        
+
         with sqlite3.connect(database="database/database.sqlite3") as db:
             cursor = db.cursor()
             req = cursor.execute(
@@ -177,11 +190,13 @@ class Notes(QMainWindow, NotesMainWindow):
 
         self.title.setPlainText(data[self.number]['title'])
         self.description.setPlainText(data[self.number]['description'])
+        
+        
 
-    def make_an_note(self):
+    def make_a_note(self):
         global current_user
         """процесс сохранения новой информации и внесение её в БД"""
-        print(self.number)
+        # print(self.number)
         self.changebox.hide()
         self._show_mainboard()
         self.label_mainwindow_name.setText('Memorandum')
@@ -197,10 +212,12 @@ class Notes(QMainWindow, NotesMainWindow):
 
             data[self.number]['title'] = self.title.toPlainText()
             data[self.number]['description'] = self.description.toPlainText()
-            print(data)
-            print(current_user)
+            data[self.number]['being'] = True
+            # print(data)
+            # print(current_user)
             cursor.execute(
                 f'UPDATE USERDATA SET DATA = "{data}" WHERE LOGIN = "{current_user}"')
+            
             db.commit()
         self.init_user_interface()
 
@@ -212,21 +229,94 @@ class Notes(QMainWindow, NotesMainWindow):
 
             data = [item for item in req][0][-1]
             data = ast.literal_eval(data)
+           
 
         self.stack_1.setTitle(data['1']['title'])
         self.lt_1.setText(data['1']['description'])
+        if not data['1']['being']:
+            self.cb_1.setText('Создать')
+            self.db_1.setEnabled(False)
+        else:
+            self.cb_1.setText('Редактировать')
+            self.db_1.setEnabled(True)
         self.stack_2.setTitle(data['2']['title'])
         self.lt_2.setText(data['2']['description'])
+        if not data['2']['being']:
+            self.cb_2.setText('Создать')
+            self.db_2.setEnabled(False)
+        else:
+            self.cb_2.setText('Редактировать')
+            self.db_2.setEnabled(True)
         self.stack_3.setTitle(data['3']['title'])
         self.lt_3.setText(data['3']['description'])
+        if not data['3']['being']:
+            self.cb_3.setText('Создать')
+            self.db_3.setEnabled(False)
+        else:
+            self.cb_3.setText('Редактировать')
+            self.db_3.setEnabled(True)
         self.stack_4.setTitle(data['4']['title'])
         self.lt_4.setText(data['4']['description'])
+        if not data['4']['being']:
+            self.cb_4.setText('Создать')
+            self.db_4.setEnabled(False)
+        else:
+            self.cb_4.setText('Редактировать')
+            self.db_4.setEnabled(True)
         self.stack_5.setTitle(data['5']['title'])
         self.lt_5.setText(data['5']['description'])
+        if not data['5']['being']:
+            self.cb_5.setText('Создать')
+            self.db_5.setEnabled(False)
+        else:
+            self.cb_5.setText('Редактировать')
+            self.db_5.setEnabled(True)
         self.stack_6.setTitle(data['6']['title'])
         self.lt_6.setText(data['6']['description'])
+        if not data['6']['being']:
+            self.cb_6.setText('Создать')
+            self.db_6.setEnabled(False)
+        else:
+            self.cb_6.setText('Редактировать')
+            self.db_6.setEnabled(True)
         self.repaint()
 
+    def backEvent(self):
+        
+        self.title.setPlainText('')
+        self.description.setPlainText('')
+        self._show_mainboard()
+        self.init_user_interface()
+        self.changebox.hide()   
+        self.label_mainwindow_name.setText('Memorandum')
+        self.label_mainwindow_name.setFont(QFont('Comic Sans MS', 30))
+        self.label_mainwindow_name.setAlignment(Qt.AlignmentFlag.AlignHCenter)
+
+    def deleteEvent(self):
+        confirmation = QMessageBox.question(
+            self, "Удалить", "Вы точно хотите удалить заметку?")
+        if confirmation == 16384:
+            self.number = self.sender().objectName().split('_')[-1]
+            with sqlite3.connect(database="database/database.sqlite3") as db:
+                cursor = db.cursor()
+                req = cursor.execute(
+                    f'SELECT * FROM USERDATA WHERE LOGIN = "{current_user}"')
+
+                data = [item for item in req][0][-1]
+                data = ast.literal_eval(data)
+
+                data[self.number]['title'] = '-'
+                data[self.number]['description'] = ''
+                data[self.number]['being'] = False
+
+                cursor.execute(
+                    f'UPDATE USERDATA SET DATA = "{data}" WHERE LOGIN = "{current_user}"')
+                
+                db.commit()
+            
+            self.init_user_interface()
+        else:
+            pass
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)

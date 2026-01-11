@@ -680,6 +680,18 @@
        <height>391</height>
       </rect>
      </property>
+     <property name="font">
+      <font>
+       <family>Comic Sans MS</family>
+       <pointsize>12</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">font: 12pt &quot;Comic Sans MS&quot;;</string>
+     </property>
+     <property name="placeholderText">
+      <string>текст...</string>
+     </property>
     </widget>
     <widget class="QPlainTextEdit" name="title">
      <property name="geometry">
@@ -689,6 +701,18 @@
        <width>1091</width>
        <height>61</height>
       </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Comic Sans MS</family>
+       <pointsize>12</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">font: 12pt &quot;Comic Sans MS&quot;;</string>
+     </property>
+     <property name="placeholderText">
+      <string>введите название</string>
      </property>
     </widget>
     <widget class="QPushButton" name="save_new">
