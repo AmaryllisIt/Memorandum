@@ -3,7 +3,7 @@ from ui.notes_ui import Ui_MainWindow as NotesMainWindow
 from modules.encoder import encoder
 
 from PyQt6.QtWidgets import QMainWindow, QMessageBox, QApplication
-from PyQt6.QtGui import QIcon, QFont
+from PyQt6.QtGui import QIcon, QFont, QPixmap
 from PyQt6.QtCore import Qt
 import sqlite3
 import sys
@@ -23,6 +23,7 @@ class Authentication(QMainWindow, LoginWindow):
         self.setWindowTitle('Авторизация')
         self.setFixedSize(600, 741)
         self.setWindowIcon(QIcon('images/main_icon.ico'))
+        self.label.setPixmap(QPixmap('images/login_background.jpg'))
         self.start.clicked.connect(self.ExecuteNotes)
         self.go_login.clicked.connect(self._login_form)
         self.go_reg.clicked.connect(self._registration_form)
@@ -135,6 +136,7 @@ class Notes(QMainWindow, NotesMainWindow):
         self.setupUi(self)
         self.setFixedSize(self.width(), self.height())
         self.setWindowIcon(QIcon("images/main_icon.ico"))
+        self.label.setPixmap(QPixmap('images/notes_background.jpg'))
         self.cb_1.clicked.connect(self.edit_menu)
         self.cb_2.clicked.connect(self.edit_menu)
         self.cb_3.clicked.connect(self.edit_menu)
