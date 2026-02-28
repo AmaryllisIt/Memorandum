@@ -132,22 +132,6 @@
       <bool>false</bool>
      </property>
     </widget>
-    <widget class="QTextEdit" name="password">
-     <property name="geometry">
-      <rect>
-       <x>200</x>
-       <y>310</y>
-       <width>231</width>
-       <height>41</height>
-      </rect>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">font: 12pt &quot;Comic Sans MS&quot;;</string>
-     </property>
-     <property name="placeholderText">
-      <string>пароль</string>
-     </property>
-    </widget>
     <widget class="QTextEdit" name="login">
      <property name="geometry">
       <rect>
@@ -236,56 +220,6 @@
       <string>логин</string>
      </property>
     </widget>
-    <widget class="QTextEdit" name="password_2">
-     <property name="enabled">
-      <bool>true</bool>
-     </property>
-     <property name="geometry">
-      <rect>
-       <x>200</x>
-       <y>340</y>
-       <width>231</width>
-       <height>41</height>
-      </rect>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">font: 12pt &quot;Comic Sans MS&quot;;</string>
-     </property>
-     <property name="documentTitle">
-      <string extracomment="dtjdfhfdjf"/>
-     </property>
-     <property name="overwriteMode">
-      <bool>false</bool>
-     </property>
-     <property name="placeholderText">
-      <string>повторите пароль</string>
-     </property>
-    </widget>
-    <widget class="QTextEdit" name="password_1">
-     <property name="enabled">
-      <bool>true</bool>
-     </property>
-     <property name="geometry">
-      <rect>
-       <x>200</x>
-       <y>290</y>
-       <width>231</width>
-       <height>41</height>
-      </rect>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">font: 12pt &quot;Comic Sans MS&quot;;</string>
-     </property>
-     <property name="documentTitle">
-      <string extracomment="dtjdfhfdjf"/>
-     </property>
-     <property name="overwriteMode">
-      <bool>false</bool>
-     </property>
-     <property name="placeholderText">
-      <string>пароль</string>
-     </property>
-    </widget>
     <widget class="QPushButton" name="start">
      <property name="geometry">
       <rect>
@@ -314,18 +248,76 @@
       <bool>false</bool>
      </property>
     </widget>
+    <widget class="QLineEdit" name="password_1">
+     <property name="geometry">
+      <rect>
+       <x>200</x>
+       <y>300</y>
+       <width>231</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">font: 12pt &quot;Comic Sans MS&quot;;</string>
+     </property>
+     <property name="echoMode">
+      <enum>QLineEdit::Password</enum>
+     </property>
+     <property name="placeholderText">
+      <string>пароль</string>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="password_2">
+     <property name="geometry">
+      <rect>
+       <x>200</x>
+       <y>360</y>
+       <width>231</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">font: 12pt &quot;Comic Sans MS&quot;;</string>
+     </property>
+     <property name="echoMode">
+      <enum>QLineEdit::Password</enum>
+     </property>
+     <property name="placeholderText">
+      <string>повторите пароль</string>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="password">
+     <property name="geometry">
+      <rect>
+       <x>200</x>
+       <y>330</y>
+       <width>231</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">font: 12pt &quot;Comic Sans MS&quot;;
+</string>
+     </property>
+     <property name="echoMode">
+      <enum>QLineEdit::Password</enum>
+     </property>
+     <property name="placeholderText">
+      <string>пароль</string>
+     </property>
+    </widget>
     <zorder>label</zorder>
     <zorder>header</zorder>
     <zorder>label_2</zorder>
     <zorder>go_login</zorder>
-    <zorder>password</zorder>
     <zorder>login</zorder>
     <zorder>label_3</zorder>
     <zorder>go_reg</zorder>
     <zorder>new_login</zorder>
-    <zorder>password_2</zorder>
-    <zorder>password_1</zorder>
     <zorder>start</zorder>
+    <zorder>password_1</zorder>
+    <zorder>password_2</zorder>
+    <zorder>password</zorder>
    </widget>
   </widget>
  </widget>
