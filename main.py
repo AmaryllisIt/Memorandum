@@ -156,7 +156,7 @@ class Notes(QMainWindow, NotesMainWindow):
 
     def about(self):
         self.info_label.setText(
-            "Приложение \"Memorandum\"\nСтатус разработки: alpha \n\nNavio, Sarugakuza, AmaryllisIt, \n2026")
+            "Приложение \"Memorandum\"\nСтатус разработки: realise \n\nNavio, Sarugakuza, AmaryllisIt, Navioyume, \n2026")
         self.info_label.show()
         self.info_label.setWindowTitle('О приложении')
 
@@ -199,7 +199,6 @@ class Notes(QMainWindow, NotesMainWindow):
     def make_a_note(self):
         global current_user
         """процесс сохранения новой информации и внесение её в БД"""
-        # print(self.number)
         self.changebox.hide()
         self._show_mainboard()
         self.label_mainwindow_name.setText('Memorandum')
@@ -211,23 +210,24 @@ class Notes(QMainWindow, NotesMainWindow):
                 f'SELECT * FROM USERDATA WHERE LOGIN = "{current_user}"')
 
             data = [item for item in req][0][-1]
+
+            # получение словаря из базы данных
             data = ast.literal_eval(data)
 
-            data[self.number]['title'] = self.title.toPlainText()
-            data[self.number]['description'] = self.description.toPlainText()
-            data[self.number]['being'] = True
-            # print(data)
-            # print(current_user)
-            try:
-                cursor.execute(
-                    f'UPDATE USERDATA SET DATA = "{data}" WHERE LOGIN = "{current_user}"')
-            except sqlite3.OperationalError as e:
-                self.info_label.setText(
-                    "В данной версии программы недопустимо использование одинарных и двойных кавычек и других специальных символов.")
-                self.info_label.setWindowTitle('Ошибка!')
-                self.info_label.show()
+            if (self.title.toPlainText().lstrip() or self.description.toPlainText().lstrip()):
+                data[self.number]['title'] = self.title.toPlainText()
+                data[self.number]['description'] = self.description.toPlainText()
+                data[self.number]['being'] = True
+                try:
+                    cursor.execute(
+                        f'UPDATE USERDATA SET DATA = "{data}" WHERE LOGIN = "{current_user}"')
+                except sqlite3.OperationalError as e:
+                    self.info_label.setText(
+                        "В данной версии программы недопустимо использование одинарных и двойных кавычек.")
+                    self.info_label.setWindowTitle('Ошибка!')
+                    self.info_label.show()
 
-            db.commit()
+                db.commit()
         self.init_user_interface()
 
     def init_user_interface(self):
@@ -314,6 +314,7 @@ class Notes(QMainWindow, NotesMainWindow):
     def deleteEvent(self):
         confirmation = QMessageBox.question(
             self, "Удалить", "Вы точно хотите удалить заметку?")
+        # определяем, какую кнопку нажали
         if confirmation == 16384:
             self.number = self.sender().objectName().split('_')[-1]
             with sqlite3.connect(database="database/database.sqlite3") as db:
@@ -337,7 +338,7 @@ class Notes(QMainWindow, NotesMainWindow):
         else:
             pass
 
-
+        
 if __name__ == '__main__':
     app = QApplication(sys.argv)
     ex1 = Authentication()

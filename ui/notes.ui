@@ -769,9 +769,9 @@
    <widget class="QLabel" name="label_mainwindow_name_2">
     <property name="geometry">
      <rect>
-      <x>590</x>
+      <x>50</x>
       <y>690</y>
-      <width>591</width>
+      <width>1181</width>
       <height>21</height>
      </rect>
     </property>
@@ -791,7 +791,7 @@
      <string notr="true">text-color: rgb(255, 255, 255)</string>
     </property>
     <property name="text">
-     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:10pt; color:#ffffff;&quot;&gt;Програмное обеспечение разработано для немассового использования. Memorandum 2026.&lt;/span&gt;&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:10pt; color:#ffffff;&quot;&gt;&lt;br/&gt;&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:10pt; color:#ffffff;&quot;&gt; Memorandum 2026.&lt;/span&gt;&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:10pt; color:#ffffff;&quot;&gt;&lt;br/&gt;&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
     </property>
    </widget>
    <zorder>label</zorder>

@@ -164,7 +164,7 @@
       </rect>
      </property>
      <property name="text">
-      <string>alpha v0.1.1</string>
+      <string>Realise v1.1</string>
      </property>
     </widget>
     <widget class="QPushButton" name="go_reg">

@@ -118,7 +118,7 @@ class Ui_MainWindow(object):
         self.go_login.setToolTip(_translate("MainWindow", "<html><head/><body><p><br/></p></body></html>"))
         self.go_login.setText(_translate("MainWindow", "Войти"))
         self.login.setPlaceholderText(_translate("MainWindow", "логин"))
-        self.label_3.setText(_translate("MainWindow", "alpha v0.1.1"))
+        self.label_3.setText(_translate("MainWindow", "Realise v1.1"))
         self.go_reg.setToolTip(_translate("MainWindow", "<html><head/><body><p><br/></p></body></html>"))
         self.go_reg.setText(_translate("MainWindow", "Зарегистрироваться"))
         self.new_login.setPlaceholderText(_translate("MainWindow", "логин"))
